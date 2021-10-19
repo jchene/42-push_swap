@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 17:20:52 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/19 02:14:43 by jchene           ###   ########.fr       */
+/*   Updated: 2021/10/19 14:16:23 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	check_duplicates(void)
 
 int	check_integers(int argc, char **argv)
 {
-	int		i;
-	int		minus;
-	int		atoi;
+	int			i;
+	int			minus;
+	long long	atoi;
 
 	i = 1;
 	while (i < argc)
@@ -51,7 +51,7 @@ int	check_integers(int argc, char **argv)
 		atoi = ft_atoi(argv[i]);
 		if ((atoi > __INT_MAX__) || (atoi < ((__INT_MAX__ * -1) - 1)))
 			return (-1);
-		if (new_elem(atoi, sta()) == -1)
+		if (new_elem((int)atoi, sta()) == -1)
 			return (-1);
 		i++;
 	}
@@ -66,16 +66,6 @@ int	main(int argc, char **argv)
 		return (munalloc(-2));
 	if (check_duplicates() == -1)
 		return (munalloc(-3));
-	printf("Stack A:\n");
-	disp_stack(sta());
-	printf("Stack B:\n");
-	disp_stack(stb());
-	printf("*****************************************\n\n");
-	push(stb());
-	push(sta());
-	printf("Stack A:\n");
-	disp_stack(sta());
-	printf("Stack B:\n");
-	disp_stack(stb());
+	disp_debug();
 	return (munalloc(0));
 }

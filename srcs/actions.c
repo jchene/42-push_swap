@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 00:47:46 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/19 02:14:03 by jchene           ###   ########.fr       */
+/*   Updated: 2021/10/19 16:03:06 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,24 @@ void	swap(t_start *stack)
 	stack->start->next = stack->start->next->next;
 	sec_elem->next = stack->start;
 	stack->start = sec_elem;
+}
+
+void	rotate(t_start *stack)
+{
+	t_elem	*sec_elem;
+
+	sec_elem = stack->start->next;
+	last_elem(stack)->next = stack->start;
+	stack->start->next = NULL;
+	stack->start = sec_elem;
+}
+
+void	rev_rotate(t_start *stack)
+{
+	t_elem	*last;
+
+	last = last_elem(stack);
+	before_last_elem(stack)->next = NULL;
+	last->next = stack->start;
+	stack->start = last;
 }

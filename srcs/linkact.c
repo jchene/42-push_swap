@@ -1,55 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   link.c                                             :+:      :+:    :+:   */
+/*   linkact.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 17:25:13 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/19 02:08:53 by jchene           ###   ########.fr       */
+/*   Updated: 2021/10/19 15:12:48 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-t_elem	*last_elem(t_start *stack)
-{
-	t_elem	*tmp;
-
-	if (stack->start == NULL)
-		return (stack->start);
-	tmp = stack->start;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	return (tmp);
-}
-
-t_start	*other_stack(t_start *stack)
-{
-	if (stack->start == sta()->start)
-		return (stb());
-	if (stack->start == stb()->start)
-		return (sta());
-	return (NULL);
-}
-
-void	disp_stack(t_start *stack)
-{
-	t_elem	*tmp;
-
-	printf("-----------------------------------------\n");
-	tmp = stack->start;
-	if (tmp != NULL)
-	{
-		while (tmp->next != NULL)
-		{
-			printf("v:%d - a:%p - n:%p\n", tmp->value, tmp, tmp->next);
-			tmp = tmp->next;
-		}
-		printf("v:%d - a:%p - n:%p\n", tmp->value, tmp, tmp->next);
-	}
-	printf("-----------------------------------------\n\n");
-}
 
 void	insert_top(t_elem *elem, t_start *stack)
 {
@@ -81,4 +42,21 @@ int	new_elem(int value, t_start *stack)
 	elem->next = NULL;
 	insert_bot(elem, stack);
 	return (0);
+}
+
+void	free_stack(t_elem *first_elem)
+{
+	if (first_elem->next != NULL)
+		free_stack(first_elem->next);
+	free(first_elem);
+}
+
+void	free_all(void)
+{
+	if (sta()->start != NULL)
+		free_stack(sta()->start);
+	if (stb()->start != NULL)
+		free_stack(stb()->start);
+	sta()->start = NULL;
+	stb()->start = NULL;
 }
