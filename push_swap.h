@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 17:21:12 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/19 16:02:00 by jchene           ###   ########.fr       */
+/*   Updated: 2021/10/19 16:08:58 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ void			free_all(void);
 void			swap(t_start *stack);
 void			push(t_start *dst_stack);
 void			rotate(t_start *stack);
+void			rev_rotate(t_start *stack);
 
 //Debug and display functions
 void			disp_stack(t_start *stack);
 void			disp_debug(void);
+void			debug_act(void);
 #endif
