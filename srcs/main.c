@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 17:20:52 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/30 04:31:42 by jchene           ###   ########.fr       */
+/*   Updated: 2021/10/30 18:43:21 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ int	main(int argc, char **argv)
 		return (munalloc(-2));
 	if (check_duplicates() == -1)
 		return (munalloc(-3));
-	disp_debug();
+	//disp_debug();
+	//printf("xx\n");
 	sort_stack();
-	disp_debug();
+	//disp_debug();
 	return (munalloc(0));
 }

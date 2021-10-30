@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 15:11:46 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/30 02:18:38 by jchene           ###   ########.fr       */
+/*   Updated: 2021/10/30 18:43:27 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_sorted(t_start *stack)
 	t_elem	*tmp;
 
 	if (stack->start == NULL)
-		return (0);
+		return (-1);
 	tmp = stack->start;
 	while (tmp->next != NULL)
 	{
@@ -32,8 +32,9 @@ int	is_inverted(t_start *stack)
 {
 	t_elem	*tmp;
 
+	//printf("check inv\n");
 	if (stack->start == NULL)
-		return (0);
+		return (-1);
 	tmp = stack->start;
 	while (tmp->next != NULL)
 	{
@@ -41,6 +42,7 @@ int	is_inverted(t_start *stack)
 			return (-1);
 		tmp = tmp->next;
 	}
+	//printf("inverted!\n");
 	return (0);
 }
 
@@ -62,13 +64,14 @@ int	is_sort_bad_top(t_start *stack)
 		tmp = tmp->next;
 	}
 	tmp = stack->start;
-	while (top > 1)
+	while (top-- > 1)
 	{
 		if (tmp->value > tmp->next->value)
 			return (-1);
 		tmp = tmp->next;
-		top--;
 	}
+	if (stack->start->value < last_elem(stack)->value)
+		return (-1);
 	return (0);
 }
 
@@ -77,6 +80,7 @@ int	is_inv_bad_top(t_start *stack)
 	t_elem	*tmp;
 	int		top;
 
+	//printf("inv bad\n");
 	tmp = biggest_elem(stack);
 	top = elem_pos(tmp->value, stack) - 1;
 	if (stack->start == NULL)
@@ -97,5 +101,8 @@ int	is_inv_bad_top(t_start *stack)
 		tmp = tmp->next;
 		top--;
 	}
+	if (stack->start->value > last_elem(stack)->value)
+		return (-1);
+	//printf("inv bad topppp\n");
 	return (0);
 }

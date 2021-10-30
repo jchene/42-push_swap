@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 23:51:24 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/30 04:25:41 by jchene           ###   ########.fr       */
+/*   Updated: 2021/10/30 18:43:25 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	sort_top(void)
 	int		top;
 	int		len;
 
+	//printf("top\n");
 	len = ft_lstlen(sta());
 	top = elem_pos(smallest_elem(sta())->value, sta());
 	if (top <= (len / 2))
@@ -32,6 +33,7 @@ void	sort_inverted(void)
 	int		len;
 	int		push;
 
+	//printf("inv\n");
 	len = ft_lstlen(sta());
 	if (len >= 2)
 		sa();
@@ -55,6 +57,7 @@ void	sort_inverted(void)
 
 void	sort_three(void)
 {
+	//printf("tt\n");
 	if (is_sorted(sta()) != -1)
 		return ;
 	if (biggest_elem(sta())->next != smallest_elem(sta()))
@@ -74,6 +77,7 @@ void	small_sort(void)
 
 	i = 0;
 	len = ft_lstlen(sta());
+	//printf("test\n");
 	while (i++ < len - 3)
 		pb();
 	sort_three();
