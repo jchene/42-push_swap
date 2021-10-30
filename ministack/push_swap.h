@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 17:21:12 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/30 02:52:21 by jchene           ###   ########.fr       */
+/*   Updated: 2021/10/30 03:31:48 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <string.h>
 
 typedef struct s_elem
 {

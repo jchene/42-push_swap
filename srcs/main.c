@@ -1,61 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 17:20:52 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/19 14:16:23 by jchene           ###   ########.fr       */
+/*   Updated: 2021/10/30 04:31:42 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_duplicates(void)
+void	set_top(t_start *stack, int value)
 {
-	t_elem	*tmp;
-	t_elem	*tmp2;
+	int		pos;
+	int		len;
+	int		rotate;
 
-	tmp = sta()->start;
-	while (tmp->next != NULL)
+	pos = elem_pos(value, stack);
+	if (pos == -1)
+		return ;
+	len = ft_lstlen(stack);
+	if (pos > len / 2)
 	{
-		tmp2 = tmp->next;
-		while (tmp2 != NULL)
-		{
-			if (tmp->value == tmp2->value)
-				return (-1);
-			tmp2 = tmp2->next;
-		}
-		tmp = tmp->next;
+		rotate = len - (pos - 1);
+		while (rotate-- > 0)
+			rra();
 	}
-	return (0);
+	else
+	{
+		rotate = pos - 1;
+		while (rotate-- > 0)
+			ra();
+	}
+	return ;
 }
 
-int	check_integers(int argc, char **argv)
+void	sort_stack(void)
 {
-	int			i;
-	int			minus;
-	long long	atoi;
-
-	i = 1;
-	while (i < argc)
+	if (is_sorted(sta()) != -1)
+		return ;
+	else if (ft_lstlen(sta()) == 3)
+		sort_three();
+	else if (is_inverted(sta()) != -1)
+		sort_inverted();
+	else if (is_sort_bad_top(sta()) != -1)
+		sort_top();
+	else if (is_inv_bad_top(sta()) != -1)
 	{
-		if (str_charset("0123456789-", argv[i]) == -1)
-			return (-1);
-		minus = count_occur('-', argv[i]);
-		if ((minus > 1) || (minus > 0 && argv[i][0] != '-'))
-			return (-1);
-		if (ft_strlen(argv[i]) > (10 + minus))
-			return (-1);
-		atoi = ft_atoi(argv[i]);
-		if ((atoi > __INT_MAX__) || (atoi < ((__INT_MAX__ * -1) - 1)))
-			return (-1);
-		if (new_elem((int)atoi, sta()) == -1)
-			return (-1);
-		i++;
+		sort_inverted();
+		sort_top();
 	}
-	return (0);
+	else if (ft_lstlen(sta()) <= 10000000)
+		small_sort();
+	else
+		big_sort();
+	return ;
 }
 
 int	main(int argc, char **argv)
@@ -66,6 +67,8 @@ int	main(int argc, char **argv)
 		return (munalloc(-2));
 	if (check_duplicates() == -1)
 		return (munalloc(-3));
+	disp_debug();
+	sort_stack();
 	disp_debug();
 	return (munalloc(0));
 }

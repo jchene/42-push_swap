@@ -1,4 +1,4 @@
-NAME		=	push_swap
+NAME		=	ministack
 
 SRCS		=	./srcs/*.c\
 
