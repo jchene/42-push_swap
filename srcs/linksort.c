@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 23:51:24 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/01 03:56:57 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/01 18:33:04 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	sort_top(void)
 	int		top;
 	int		len;
 
-	//printf("top\n");
 	len = ft_lstlen(sta());
 	top = elem_pos(smallest_elem(sta())->value, sta());
 	if (top <= (len / 2))
@@ -33,7 +32,6 @@ void	sort_inverted(void)
 	int		len;
 	int		push;
 
-	//printf("inv\n");
 	len = ft_lstlen(sta());
 	if (len >= 2)
 		sa();
@@ -57,7 +55,6 @@ void	sort_inverted(void)
 
 void	sort_three(void)
 {
-	//printf("tt\n");
 	if (is_sorted(sta()) != -1)
 		return ;
 	if (biggest_elem(sta())->next != smallest_elem(sta()))
@@ -91,7 +88,7 @@ void	small_sort(void)
 
 void	big_sort(void)
 {
-	int		elements;
+	unsigned int	elements;
 
 	set_chunks();
 	sort_chunks();
@@ -99,10 +96,9 @@ void	big_sort(void)
 	elements = ft_lstlen(stb());
 	while (elements > 0)
 	{
-		disp_debug();
 		pa();
-		if (stb()->start != NULL)
-			rrb();
+		rrb();
+		elements--;
 	}
 	return ;
 }

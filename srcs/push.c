@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 00:53:40 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/01 03:33:52 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/01 13:56:36 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	push(t_start *dst_stack, int display)
 		src_stack = stb();
 	else
 		src_stack = sta();
+	if (ft_lstlen(src_stack) < 1)
+		return ;
 	sec_elem = src_stack->start->next;
 	src_stack->start->next = dst_stack->start;
 	dst_stack->start = src_stack->start;

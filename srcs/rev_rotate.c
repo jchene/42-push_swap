@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 00:53:51 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/31 20:22:53 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/01 13:56:28 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	rev_rotate(t_start *stack, int display)
 {
 	t_elem	*last;
 
+	if (ft_lstlen(stack) < 2)
+		return ;
 	if (display)
 	{
 		if (stack == sta())
