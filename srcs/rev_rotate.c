@@ -6,16 +6,23 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 00:53:51 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/20 01:01:25 by jchene           ###   ########.fr       */
+/*   Updated: 2021/10/31 20:22:53 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rev_rotate(t_start *stack)
+void	rev_rotate(t_start *stack, int display)
 {
 	t_elem	*last;
 
+	if (display)
+	{
+		if (stack == sta())
+			ft_putstr("rra\n");
+		else
+			ft_putstr("rrb\n");
+	}
 	last = last_elem(stack);
 	before_last_elem(stack)->next = NULL;
 	last->next = stack->start;
@@ -25,18 +32,18 @@ void	rev_rotate(t_start *stack)
 void	rra(void)
 {
 	ft_putstr("rra\n");
-	rev_rotate(sta());
+	rev_rotate(sta(), 0);
 }
 
 void	rrb(void)
 {
 	ft_putstr("rrb\n");
-	rev_rotate(stb());
+	rev_rotate(stb(), 0);
 }
 
 void	rrr(void)
 {
 	ft_putstr("rrr\n");
-	rev_rotate(sta());
-	rev_rotate(stb());
+	rev_rotate(sta(), 0);
+	rev_rotate(stb(), 0);
 }

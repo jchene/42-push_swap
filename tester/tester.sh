@@ -133,7 +133,7 @@ for ((stack_size = $startRange; stack_size <= $endRange; stack_size++)); do
 			COLOR=${RED}
 		fi
 	fi
-	printf "${COLOR} $MOVES ${NOCOLOR} instructions ${ARG}\n"
+	printf "${COLOR} $MOVES ${NOCOLOR} instructions\n"
 	TOTAL=$(( $TOTAL + $MOVES ))
   done
   MEAN=$(( $TOTAL / $TotalNbTest ))

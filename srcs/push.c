@@ -6,17 +6,24 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 00:53:40 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/20 01:16:37 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/01 03:33:52 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	push(t_start *dst_stack)
+void	push(t_start *dst_stack, int display)
 {
 	t_start	*src_stack;
 	t_elem	*sec_elem;
 
+	if (display)
+	{
+		if (dst_stack == sta())
+			ft_putstr("pa\n");
+		else
+			ft_putstr("pb\n");
+	}
 	if (dst_stack->name == 'a')
 		src_stack = stb();
 	else
@@ -30,11 +37,11 @@ void	push(t_start *dst_stack)
 void	pa(void)
 {
 	ft_putstr("pa\n");
-	push(sta());
+	push(sta(), 0);
 }
 
 void	pb(void)
 {
 	ft_putstr("pb\n");
-	push(stb());
+	push(stb(), 0);
 }

@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 14:09:32 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/30 00:22:48 by jchene           ###   ########.fr       */
+/*   Updated: 2021/10/31 23:50:24 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ void	disp_stack(t_start *stack)
 	{
 		while (tmp->next != NULL)
 		{
-			printf("v:%d - a:%p - n:%p\n", tmp->value, tmp, tmp->next);
+			printf("v:%d - c_id: %d - a:%p - n:%p\n", tmp->value,
+				tmp->chunk_id, tmp, tmp->next);
 			tmp = tmp->next;
 		}
-		printf("v:%d - a:%p - n:%p\n", tmp->value, tmp, tmp->next);
+		printf("v:%d - c_id: %d - a:%p - n:%p\n", tmp->value,
+			tmp->chunk_id, tmp, tmp->next);
 	}
 	printf("-----------------------------------------\n\n");
 }

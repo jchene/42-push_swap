@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 23:51:24 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/30 18:43:25 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/01 03:56:57 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	small_sort(void)
 
 	i = 0;
 	len = ft_lstlen(sta());
-	//printf("test\n");
 	while (i++ < len - 3)
 		pb();
 	sort_three();
@@ -92,5 +91,18 @@ void	small_sort(void)
 
 void	big_sort(void)
 {
+	int		elements;
+
+	set_chunks();
+	sort_chunks();
+	set_top(stb(), biggest_elem(stb())->value);
+	elements = ft_lstlen(stb());
+	while (elements > 0)
+	{
+		disp_debug();
+		pa();
+		if (stb()->start != NULL)
+			rrb();
+	}
 	return ;
 }

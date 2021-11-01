@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 21:38:59 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/30 04:26:18 by jchene           ###   ########.fr       */
+/*   Updated: 2021/10/31 23:20:13 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,21 @@ int	next_value(t_start *stack, int value)
 	if (tmp->value > value && tmp->value < next)
 		next = tmp->value;
 	return (next);
+}
+
+int	moves_to_top(t_start *stack, int value)
+{
+	int		pos;
+	int		len;
+	int		rot;
+
+	pos = elem_pos(value, stack);
+	if (pos == -1)
+		return (-1);
+	len = ft_lstlen(stack);
+	if (pos > (len / 2) + (len % 2))
+		rot = len - (pos - 1);
+	else
+		rot = pos - 1;
+	return (rot);
 }

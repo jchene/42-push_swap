@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 17:25:13 by jchene            #+#    #+#             */
-/*   Updated: 2021/10/19 20:56:06 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/01 00:34:08 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,33 @@ int	new_elem(int value, t_start *stack)
 	if (!elem)
 		return (-1);
 	elem->value = value;
+	elem->chunk_id = -1;
 	elem->next = NULL;
 	insert_bot(elem, stack);
 	return (0);
 }
 
-void	free_stack(t_elem *first_elem)
+void	set_top(t_start *stack, int value)
 {
-	if (first_elem->next != NULL)
-		free_stack(first_elem->next);
-	free(first_elem);
-}
+	int		pos;
+	int		len;
+	int		rot;
 
-void	free_all(void)
-{
-	if (sta()->start != NULL)
-		free_stack(sta()->start);
-	if (stb()->start != NULL)
-		free_stack(stb()->start);
-	sta()->start = NULL;
-	stb()->start = NULL;
+	pos = elem_pos(value, stack);
+	if (pos == -1)
+		return ;
+	len = ft_lstlen(stack);
+	if (pos > (len / 2) + (len % 2))
+	{
+		rot = len - (pos - 1);
+		while (rot-- > 0)
+			rev_rotate(stack, 1);
+	}
+	else
+	{
+		rot = pos - 1;
+		while (rot-- > 0)
+			rotate(stack, 1);
+	}
+	return ;
 }
