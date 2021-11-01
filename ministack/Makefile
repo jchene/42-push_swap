@@ -1,6 +1,21 @@
 NAME		=	ministack
 
-SRCS		=	./srcs/*.c\
+SRCS		=	../srcs/linknum.c\
+				../srcs/linksort.c\
+				../srcs/linkact.c\
+				../srcs/linkelem.c\
+				../srcs/linkinfo.c\
+				../srcs/parsing.c\
+				../srcs/strlib.c\
+				../srcs/debug.c\
+				../srcs/memory.c\
+				../srcs/static.c\
+				../srcs/chunks.c\
+				../srcs/rotate.c\
+				../srcs/rev_rotate.c\
+				../srcs/push.c\
+				../srcs/swap.c\
+				./main.c\
 
 CC			=	gcc
 
