@@ -6,13 +6,12 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 17:21:12 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/01 02:46:10 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/03 17:35:15 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# define CHUNK_SIZE 25
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -30,6 +29,12 @@ typedef struct s_start
 	char	name;
 	t_elem	*start;
 }				t_start;
+
+typedef struct s_chunk
+{
+	int		init;
+	int		size;
+}				t_chunk;
 
 //Multi purpose functions - Strings
 int				ft_strlen(char *str);
@@ -52,6 +57,7 @@ int				check_integers(int argc, char **argv);
 //Stacks starting point addresses
 t_start			*sta(void);
 t_start			*stb(void);
+t_chunk			*chunk(void);
 
 //Linked list functions - Informations
 int				is_sorted(t_start *stack);

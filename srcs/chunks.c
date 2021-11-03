@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 00:27:08 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/01 02:33:50 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/01 21:37:48 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	set_chunks(void)
 	elem_id = 0;
 	while (tmp != biggest_elem(sta()))
 	{
-		if (elem_id > CHUNK_SIZE - 1)
+		if (elem_id > chunk()->size - 1)
 		{
 			chunk_id++;
 			elem_id = 0;
@@ -32,7 +32,7 @@ void	set_chunks(void)
 		tmp = elem_addr(next_value(sta(), tmp->value), sta());
 		elem_id++;
 	}
-	if (elem_id > CHUNK_SIZE - 1)
+	if (elem_id > chunk()->size - 1)
 	{
 		chunk_id++;
 		elem_id = 0;

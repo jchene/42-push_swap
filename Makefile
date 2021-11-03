@@ -1,5 +1,7 @@
 NAME		=	push_swap
 
+HEADER		=	./push_swap.h
+
 SRCS		=	./srcs/linknum.c\
 				./srcs/linksort.c\
 				./srcs/linkact.c\
@@ -32,7 +34,7 @@ all:			$(NAME)
 %.o:%.c
 				$(CC) $(CFLAGS) -o $@ -c $<
 
-$(NAME):		$(OBJ)
+$(NAME):		$(OBJ) $(HEADER)
 				$(CC) -o $(NAME) $(SRCS) $(CFLAGS)
 
 san:			$(OBJ)

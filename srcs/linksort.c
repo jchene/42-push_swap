@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 23:51:24 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/01 18:33:04 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/01 21:40:06 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,10 @@ void	big_sort(void)
 {
 	unsigned int	elements;
 
+	if (ft_lstlen(sta()) > 250)
+		chunk()->size = 38;
+	else
+		chunk()->size = 18;
 	set_chunks();
 	sort_chunks();
 	set_top(stb(), biggest_elem(stb())->value);
